@@ -1,6 +1,6 @@
 import { HttpStatus, Injectable, Logger } from '@nestjs/common';
 import * as sendgrid from '@sendgrid/mail';
-import { envs } from 'src/config';
+import { envs } from '../config/envs.config';
 import { SendEmailDto } from './dto/send-email.dto';
 import { RpcException } from '@nestjs/microservices';
 import { PasswordResetEmailDto } from './dto/password-reset-email.dto';
