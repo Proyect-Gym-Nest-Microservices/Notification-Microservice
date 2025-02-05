@@ -8,8 +8,6 @@ import { PasswordResetEmailDto } from './dto/password-reset-email.dto';
 @Injectable()
 export class NotificationService {
 
-  private readonly logger = new Logger('Notification-service')
-
   constructor() {
     sendgrid.setApiKey(envs.SENDGRID_API_KEY)
   }
@@ -45,11 +43,7 @@ export class NotificationService {
         });
       }
     } catch (error) {
-      
-      if (error instanceof RpcException) {
-        throw error;
-      }
-
+      if (error instanceof RpcException)throw error;
       throw new RpcException({
         message: `Failed to send email: ${error.message}`,
         status: HttpStatus.INTERNAL_SERVER_ERROR
